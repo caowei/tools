@@ -1,0 +1,24 @@
+1.Export .jks to .pfx
+   keytool -importkeystore -srckeystore [MY_KEYSTORE.jks] -destkeystore [MY_FILE.p12]
+ -srcstoretype JKS -deststoretype PKCS12 -deststorepass [PASSWORD_PKCS12]
+ -srcalias [ALIAS_SRC] -destalias [ALIAS_DEST]
+ 
+  keytool -importkeystore -srckeystore mom-csp-uat.jks -destkeystore mom-csp-uat.pfx -srcstoretype JKS -deststoretype PKCS12 -deststorepass mom-gcloud
+ 
+ 
+ 
+ 2.Export public certificate from jks 
+   keytool -export -alias test-key -keystore test-keystore -rfc -file test-key.cer
+ 
+
+ 
+3.Change key store password
+    keytool -storepasswd -keystore my.keystore   
+	
+	
+4. Change key password	
+    keytool -keypasswd  -alias <key_name> -keystore my.keystore
+	
+5. Create private key and CSR
+    5.1 keytool  -genkey -keyalg RSA -keysize 2048 -sigalg SHA256withRSA -keystore mccy-csp-uat.jks -alias mccy-csp-uat -validity 730
+    5.2 keytool -certreq -keyalg RSA -alias mccy-csp-uat  -file mccy-csp-uat.txt -keystore mccy-csp-uat.jks -storepass mccy-csp-uat	
