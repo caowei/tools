@@ -1,0 +1,2 @@
+#Allow user to bind privileged port
+/usr/sbin/usermod -K defaultpriv=basic,net_privaddr {your OS account name}
