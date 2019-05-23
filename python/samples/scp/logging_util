@@ -1,0 +1,6 @@
+import time
+
+
+def log(msg):
+    s_time = time.strftime("%Y-%m-%d %H:%M:%S")
+    print("[{0}]: {1}".format(s_time, msg))
